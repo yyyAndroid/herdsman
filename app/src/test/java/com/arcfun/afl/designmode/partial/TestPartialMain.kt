@@ -24,6 +24,6 @@ class TestPartialMain {
 
         val applyChain = groupLeader orElse pressident
 
-        applyChain(ApplyEvent(400, "hold a"))
+        applyChain(ApplyEvent(200, "hold a"))
     }
 }
