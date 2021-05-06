@@ -5,9 +5,9 @@ import java.util.*
 object LinkedSourceFactory {
 
     fun createLinked(): ListNode {
-        var header = ListNode("header", null)
+        var header = ListNode("1", null)
         var top = header
-        val lists = listOf<String>("1", "2", "3", "4", "5", "6")
+        val lists = listOf<String>("1", "2", "2", "1", "1")
         lists.forEach {
             header.next = ListNode(it, null)
             header = header.next!!
