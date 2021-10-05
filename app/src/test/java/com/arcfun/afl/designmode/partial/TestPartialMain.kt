@@ -4,8 +4,11 @@ import org.junit.Test
 
 class TestPartialMain {
 
+
     @Test
     fun test() {
+          var applyChain //
+                : PartialFunction<ApplyEvent, Unit>
         val groupLeader = {
             val definetAt: (ApplyEvent) -> Boolean = { it.money <= 200 }
             val handler: (ApplyEvent) -> Unit = {
@@ -21,9 +24,10 @@ class TestPartialMain {
             }
             PartialFunction(definetAt, handler)
         }()
+        val list = mutableListOf(groupLeader, pressident)
+        applyChain = list[0] orElse list[1]
+        System.out.println(" ${pressident::class.java}")
 
-        val applyChain = groupLeader orElse pressident
-
-        applyChain(ApplyEvent(200, "hold a"))
+        applyChain.invoke(ApplyEvent(200, "hold a"))
     }
 }

@@ -23,7 +23,6 @@ object Huiwen {
         return res
     }
 
-    fun
 
     fun traverse(head : ListNode?) : ListNode?{
         var current = head

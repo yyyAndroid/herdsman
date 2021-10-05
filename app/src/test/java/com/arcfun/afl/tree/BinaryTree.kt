@@ -71,7 +71,7 @@ object BinaryTree {
      * 第三道题 -- 将二叉树展开为链表
      *
      */
-    fun flatten(root : TreeNode?){
+    fun flatten(root: TreeNode?) {
         if (Objects.isNull(root)) return
 
         flatten(root?.left)//递推
@@ -85,11 +85,36 @@ object BinaryTree {
 
         //找到右子树的最后一个节点
         var point = root
-        while (Objects.nonNull(point?.right)){
+        while (Objects.nonNull(point?.right)) {
             point = point?.right
         }
         point?.right = right
     }
+
+    /**
+     * 构建最大二叉树
+     * 函数的定义，构建出最大树
+     */
+
+    fun constructMaximumBinaryTree(nums: IntArray): TreeNode? {
+        if (Objects.isNull(nums)) return null
+
+        var maxVal = Int.MIN_VALUE
+        var index = 0
+        var count = 0
+        nums.forEach {
+            if (it > maxVal) {
+                maxVal = it
+                count = index
+            }
+            index++
+        }
+        var root = TreeNode(null, null, maxVal.toString(), null)
+        root.left = constructMaximumBinaryTree(Arrays.copyOfRange(nums, 0, index - 1))
+        root.right = constructMaximumBinaryTree(Arrays.copyOfRange(nums, index + 1, nums.size - 1))
+        return root
+    }
+
 
 
 }

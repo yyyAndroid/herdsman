@@ -18,7 +18,7 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.arcfun.javademo", appContext.packageName)
+        System.out.println(Float.MAX_VALUE);
+
     }
 }
